@@ -1,0 +1,2 @@
+{ "name": "m8-m9-week7-practice", "version": "1.0.0", "private": true,
+  "type": "module", "engines": { "node": ">=20" } }

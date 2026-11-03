@@ -1,0 +1,7 @@
+# NestJS: the case for and against
+
+For a service owned by a team that is growing and expected to live for years, NestJS can make wiring and conventions consistent enough to pay for its learning cost. When the same people are on call across several services, familiar module and provider patterns reduce the effort of switching contexts; and once a service has dozens of providers, explicit dependency injection is easier to maintain than a hand-written wiring file that keeps growing. The value is not that the framework removes complexity, but that it gives a larger team a shared way to organize it.
+
+Against adopting NestJS, a small team that already ships plain JavaScript would have to take on TypeScript and a build step as well as learn the framework, a cost that can take weeks for each new joiner to repay. Dependency indirection can also make a production stack trace harder to follow than direct construction, especially while someone is debugging an unfamiliar provider graph. For a short-lived command-line utility or a small service with only a few dependencies, the framework would add more setup and concepts than the project is likely to outlive.
+
+This container caches a transient dependency when it is first injected into a singleton: the singleton holds that instance for its own lifetime, while resolving the transient token directly still creates a fresh instance. This matches ordinary constructor injection and makes the lifetime difference explicit.
